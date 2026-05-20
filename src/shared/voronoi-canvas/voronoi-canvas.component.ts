@@ -24,7 +24,7 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
 
   @Input() density: number = 20;
   @Input() shatterForce: number = 10;
-  @Input() imagePath: string = 'assets/img/botella.png';
+  @Input() imagePath: string = 'assets/img/B01.png';
 
   private ctx!: CanvasRenderingContext2D | null;
   private animationFrameId?: number;
@@ -58,6 +58,9 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
   }
   private loading(): void {
     this.imagenElement = new Image();
+
+    this.imagenElement.crossOrigin = 'Anonymous';
+
     this.imagenElement.src = this.imagePath;
     this.imagenElement.onload = () => {
       this.imageLoaded = true;
@@ -65,7 +68,7 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
 
       this.startAnimation();
 
-      console.log('Imagen de botella cargada correctamente');
+      console.log('Imagen cargada correctamente');
     };
   }
   private initVoronoiGeometry(): void {

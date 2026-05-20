@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { VoronoiCanvasComponent } from '../voronoi-canvas/voronoi-canvas.component';
+import { required } from '@angular/forms/signals';
+import { CardData } from '../models/voronoi.models';
 
 @Component({
   selector: 'app-animation-card',
@@ -8,4 +10,6 @@ import { VoronoiCanvasComponent } from '../voronoi-canvas/voronoi-canvas.compone
   styleUrl: './animation-card.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnimationCard {}
+export class AnimationCard {
+  @Input({ required: true }) data!: CardData;
+}

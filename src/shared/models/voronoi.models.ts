@@ -14,3 +14,13 @@ export interface Cell {
   vx: number;
   vy: number;
 }
+
+export interface CardData {
+  id: number;
+  name: string;
+  imgUrl: string;
+
+  //Ajustes para voronoi animation
+  density: number;
+  shatterForce: number;
+}

@@ -1,15 +1,19 @@
 <div
-  class="relative overflow-hidden bg-black dark:bg-white w-[300px] h-[150px] rounded-xl flex items-center justify-center"
+  class="relative overflow-hidden w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
   (mousemove)="voronoiCanvas.tiggerImpact($event.offsetX, $event.offsetY)"
   (mouseleave)="voronoiCanvas.triggerResetoration()"
 >
-  <app-voronoi-canvas #voronoiCanvas [density]="30" [shatterForce]="8"> </app-voronoi-canvas>
-  <div class="relative z-10 pointer-events-none">
-    <button
-      class="bg-white text-black dark:bg-black dark:text-white px-6 py-2 rounded-lg font-bold"
-      type="button"
-    >
-      Accept
-    </button>
-  </div>
+  <app-voronoi-canvas
+    #voronoiCanvas
+    class="absolute top-0 left-0 w-full h-full z-0"
+    [imagePath]="data.imgUrl"
+    [density]="data.density || 20"
+    [shatterForce]="data.shatterForce || 10"
+  >
+  </app-voronoi-canvas>
+  <a href="#" class="relative z-10 pointer-events-none h-96 w-72 flex items-end">
+    <div class="px-4 py-3 w-72 bg-white/90 backdrop-blur-sm shadow-md rounded-b-xl">
+      <p class="text-lg font-bold text-black truncate block capitalize">{{ data.name }}</p>
+    </div>
+  </a>
 </div>
