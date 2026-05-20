@@ -16,7 +16,7 @@ export class AnimationComponent {
       name: 'Botella Cristal',
       imgUrl:
         'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500&auto=format&fit=crop',
-      density: 60,
+      density: 100,
       shatterForce: 15,
     },
     {
@@ -24,7 +24,7 @@ export class AnimationComponent {
       name: 'Perfume Elegante',
       imgUrl:
         'https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=500&auto=format&fit=crop',
-      density: 10,
+      density: 200,
       shatterForce: 15,
     },
     {
@@ -32,7 +32,7 @@ export class AnimationComponent {
       name: 'Jarrón Minimalista',
       imgUrl:
         'https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=500&auto=format&fit=crop',
-      density: 35,
+      density: 300,
       shatterForce: 10,
     },
     {
@@ -40,7 +40,7 @@ export class AnimationComponent {
       name: 'Taza de Café',
       imgUrl:
         'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500&auto=format&fit=crop',
-      density: 20,
+      density: 400,
       shatterForce: 15,
     },
   ];

@@ -93,6 +93,7 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
         points.push([rx, ry]);
       }
     }
+
     const delaunay = Delaunay.from(points);
     const voronoi = delaunay.voronoi([0, 0, this.width, this.height]);
 
@@ -105,6 +106,42 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
       const mappedVertices: Point[] = vertices.map((v) => ({ x: v[0], y: v[1] }));
       const centroid = this.physicsService.calculateCentroids(mappedVertices);
 
+      // 1. CALCULAMOS LOS LÍMITES EXACTOS DE LA PIEZA (Bounding Box)
+      let minX = Infinity,
+        minY = Infinity,
+        maxX = -Infinity,
+        maxY = -Infinity;
+      for (const v of mappedVertices) {
+        if (v.x < minX) minX = v.x;
+        if (v.y < minY) minY = v.y;
+        if (v.x > maxX) maxX = v.x;
+        if (v.y > maxY) maxY = v.y;
+      }
+
+      // Le damos 1 pixel de margen de seguridad para que no se corten los bordes
+      const w = Math.ceil(maxX - minX) + 1;
+      const h = Math.ceil(maxY - minY) + 1;
+
+      // 2. CREAMOS EL MINI-CANVAS DEL TAMAÑO EXACTO DEL CRISTAL (Ej: 10x15 píxeles)
+      const cellCanvas = document.createElement('canvas');
+      cellCanvas.width = w;
+      cellCanvas.height = h;
+      const cellCtx = cellCanvas.getContext('2d');
+
+      if (cellCtx) {
+        // Desplazamos el pincel hacia atrás para que el recorte caiga justo en la coordenada (0,0) de este mini-canvas
+        cellCtx.translate(-minX, -minY);
+
+        cellCtx.beginPath();
+        cellCtx.moveTo(mappedVertices[0].x, mappedVertices[0].y);
+        for (let j = 1; j < mappedVertices.length; j++) {
+          cellCtx.lineTo(mappedVertices[j].x, mappedVertices[j].y);
+        }
+        cellCtx.closePath();
+        cellCtx.clip();
+        cellCtx.drawImage(this.imagenElement, 0, 0, this.width, this.height);
+      }
+
       this.cells.push({
         id: i,
         vertices: mappedVertices,
@@ -115,9 +152,12 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
         targetY: centroid.y,
         vx: 0,
         vy: 0,
+        preRenderCanvas: cellCanvas,
+        bounds: { minX, minY, width: w, height: h }, // Guardamos dónde iba posicionada
       });
     }
   }
+
   private startAnimation(): void {
     const loop = () => {
       this.updatePhysics();
@@ -156,28 +196,21 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
   }
   private draw(): void {
     if (!this.ctx || !this.imageLoaded) return;
+
     this.ctx.clearRect(0, 0, this.width, this.height);
+
     for (const cell of this.cells) {
-      this.ctx.save();
+      if (!cell.preRenderCanvas || !cell.bounds) continue;
+
       const offsetX = cell.currentX - cell.targetX;
       const offsetY = cell.currentY - cell.targetY;
-      this.ctx.translate(offsetX, offsetY);
 
-      this.ctx.beginPath();
-      if (cell.vertices.length > 0) {
-        this.ctx.moveTo(cell.vertices[0].x, cell.vertices[0].y);
-        for (let j = 1; j < cell.vertices.length; j++) {
-          this.ctx.lineTo(cell.vertices[j].x, cell.vertices[j].y);
-        }
-      }
-      this.ctx.closePath();
-      this.ctx.clip();
-      this.ctx.drawImage(this.imagenElement, 0, 0, this.width, this.height);
-
-      this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-      this.ctx.lineWidth = 1;
-      this.ctx.stroke();
-      this.ctx.restore();
+      // Dibujamos la pieza minúscula exactamente en su sitio modificado
+      this.ctx.drawImage(
+        cell.preRenderCanvas,
+        cell.bounds.minX + offsetX,
+        cell.bounds.minY + offsetY,
+      );
     }
   }
 

@@ -13,6 +13,10 @@ export interface Cell {
   targetY: number;
   vx: number;
   vy: number;
+
+  //Optimizacion de renderizado
+  preRenderCanvas: HTMLCanvasElement;
+  bounds?: { minX: number; minY: number; width: number; height: number };
 }
 
 export interface CardData {
