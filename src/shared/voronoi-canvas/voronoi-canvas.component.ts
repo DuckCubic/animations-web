@@ -43,8 +43,14 @@ export class VoronoiCanvasComponent implements AfterViewInit, OnDestroy {
     const canvas = this.canvasRef.nativeElement;
     this.ctx = canvas.getContext('2d');
 
-    this.width = canvas.width || 300;
-    this.height = canvas.height || 300;
+    const parent = canvas.parentElement;
+    if (parent) {
+      this.width = parent.offsetWidth;
+      this.height = parent.offsetHeight;
+    } else {
+      this.width = 300;
+      this.height = 300;
+    }
 
     canvas.width = this.width;
     canvas.height = this.height;

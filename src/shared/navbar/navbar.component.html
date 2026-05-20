@@ -1,8 +1,22 @@
-<nav class="bg-white border-b-2">
-  <div class="container mx-auto px-4 py-2">
-    <ul class="flex justify-between items-center">
-      <a routerLink="home" class="font-bold text-lg">Home</a>
-      <a routerLink="animations" class="font-bold text-lg">Animations</a>
-    </ul>
+<nav class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-[#9B30FF]/20">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <a
+      href="/"
+      class="font-cinzel text-2xl tracking-[0.2em] text-white font-bold drop-shadow-[0_0_10px_rgba(147,112,219,0.5)]"
+    >
+      OBSIDIAN
+    </a>
+    <div class="hidden md:flex space-x-10">
+      <a
+        [routerLink]="['/']"
+        class="text-[#9370DB] hover:text-[#AA00FF] hover:drop-shadow-[0_0_15px_rgba(170,0,255,0.8)] transition-all duration-300 uppercase tracking-widest text-sm font-medium"
+        >Inicio</a
+      >
+      <a
+        [routerLink]="['/animations']"
+        class="text-[#9370DB] hover:text-[#AA00FF] hover:drop-shadow-[0_0_15px_rgba(170,0,255,0.8)] transition-all duration-300 uppercase tracking-widest text-sm font-medium"
+        >Animations</a
+      >
+    </div>
   </div>
 </nav>

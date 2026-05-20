@@ -1,7 +1,7 @@
-<app-navbar />
-<div class="flex flex-col min-h-screen">
-  <main class="container mx-auto py-8 grow">
-    <router-outlet />
+<div class="relative flex flex-col min-h-screen bg-black text-white font-sans overflow-x-hidden">
+  <app-navbar></app-navbar>
+  <main class="grow flex flex-col">
+    <router-outlet></router-outlet>
   </main>
+  <app-footer></app-footer>
 </div>
-<app-footer />

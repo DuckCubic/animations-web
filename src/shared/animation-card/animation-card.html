@@ -1,5 +1,5 @@
 <div
-  class="relative overflow-hidden w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+  class="relative overflow-hidden w-full h-full bg-[#0a0510] border border-[#9B30FF]/20 rounded-xl duration-500 hover:scale-[1.02] hover:border-[#AA00FF]/60 hover:shadow-[0_0_30px_rgba(170,0,255,0.3)] group cursor-crosshair"
   (mousemove)="voronoiCanvas.tiggerImpact($event.offsetX, $event.offsetY)"
   (mouseleave)="voronoiCanvas.triggerResetoration()"
 >
@@ -11,9 +11,18 @@
     [shatterForce]="data.shatterForce || 10"
   >
   </app-voronoi-canvas>
-  <a href="#" class="relative z-10 pointer-events-none h-96 w-72 flex items-end">
-    <div class="px-4 py-3 w-72 bg-white/90 backdrop-blur-sm shadow-md rounded-b-xl">
-      <p class="text-lg font-bold text-black truncate block capitalize">{{ data.name }}</p>
+  <a href="#" class="relative z-10 pointer-events-none h-full w-full flex items-end">
+    <div
+      class="px-5 py-4 w-full bg-black/60 backdrop-blur-md border-t border-[#9B30FF]/20 rounded-b-xl group-hover:bg-black/80 transition-all duration-300"
+    >
+      <p
+        class="text-sm font-bold text-white tracking-[0.15em] uppercase truncate drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+      >
+        {{ data.name }}
+      </p>
+      <p class="text-[10px] text-[#9370DB] mt-1 font-mono tracking-widest opacity-80">
+        DEN: {{ data.density || 20 }} | FRZ: {{ data.shatterForce || 10 }}
+      </p>
     </div>
   </a>
 </div>

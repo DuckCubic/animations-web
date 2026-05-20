@@ -27,4 +27,5 @@ export interface CardData {
   //Ajustes para voronoi animation
   density: number;
   shatterForce: number;
+  size?: 'normal' | 'large';
 }

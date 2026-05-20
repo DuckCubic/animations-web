@@ -17,22 +17,23 @@ export class AnimationComponent {
       imgUrl:
         'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500&auto=format&fit=crop',
       density: 100,
-      shatterForce: 15,
+      shatterForce: 20,
+      size: 'large',
     },
     {
       id: 2,
       name: 'Perfume Elegante',
       imgUrl:
         'https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=500&auto=format&fit=crop',
-      density: 200,
-      shatterForce: 15,
+      density: 50,
+      shatterForce: 5,
     },
     {
       id: 3,
       name: 'Jarrón Minimalista',
       imgUrl:
         'https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=500&auto=format&fit=crop',
-      density: 300,
+      density: 150,
       shatterForce: 10,
     },
     {
@@ -40,8 +41,8 @@ export class AnimationComponent {
       name: 'Taza de Café',
       imgUrl:
         'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500&auto=format&fit=crop',
-      density: 400,
-      shatterForce: 15,
+      density: 120,
+      shatterForce: 5,
     },
   ];
 }

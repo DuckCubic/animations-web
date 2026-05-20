@@ -1,6 +1,27 @@
-<h2 class="text-center text-black dark:text-white">Lista de animaciones</h2>
-<div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-  @for (item of items; track $index) {
-    <app-animation-card [data]="item" />
-  }
+<div class="relative min-h-screen bg-black pt-32 pb-20 px-4 md:px-8">
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#9B30FF]/10 rounded-full blur-[100px] pointer-events-none z-0"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="text-center mb-16 space-y-4">
+      <h2
+        class="font-cinzel text-3xl md:text-5xl text-white tracking-[0.2em] drop-shadow-[0_0_15px_rgba(147,112,219,0.4)]"
+      >
+        ARCHIVO DE ANIMACIONES
+      </h2>
+      <p class="text-[#9370DB] font-light tracking-widest text-sm md:text-base">
+        Interactúa con la materia geométrica
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+      @for (item of items; track item.id) {
+        <app-animation-card 
+          [data]="item"
+          [class]="item.size === 'large' ? 'md:col-span-2 md:row-span-2' : ''"
+          class="w-full h-full block">
+        </app-animation-card>
+      }
+    </div>
+  </div>
 </div>
