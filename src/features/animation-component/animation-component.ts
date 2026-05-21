@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AnimationCard } from '../../shared/animation-card/animation-card';
 import { CardData } from '../../shared/models/voronoi.models';
+import { StainedGlass } from '../../shared/stained-glass/stained-glass';
 
 @Component({
   selector: 'app-animation-component',
-  imports: [AnimationCard],
+  imports: [AnimationCard, StainedGlass],
   templateUrl: './animation-component.html',
   styleUrl: './animation-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,10 +31,9 @@ export class AnimationComponent {
     },
     {
       id: 3,
-      name: 'Jarrón Minimalista',
-      imgUrl:
-        'https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=500&auto=format&fit=crop',
-      density: 150,
+      name: 'STONE MONUMENT',
+      imgUrl: 'https://images.pexels.com/photos/19045533/pexels-photo-19045533.jpeg',
+      density: 1000,
       shatterForce: 10,
     },
     {
@@ -43,6 +43,26 @@ export class AnimationComponent {
         'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500&auto=format&fit=crop',
       density: 120,
       shatterForce: 5,
+    },
+    {
+      id: 5,
+      name: 'Cristal Térmico',
+      imgUrl: '',
+      density: 15,
+      shatterForce: 0,
+      type: 'stained-glass',
+      speed: 2,
+      palette: ['#4a154b', '#e01e5a', '#fecb2e', '#36c5f0'],
+    },
+    {
+      id: 6,
+      name: 'Cristal Térmico',
+      imgUrl: '',
+      density: 100,
+      shatterForce: 0,
+      type: 'stained-glass',
+      speed: 2,
+      palette: ['#696FC7', '#A7AAE1', '#F5D3C4', '#F2AEBB'],
     },
   ];
 }

@@ -1,32 +1,22 @@
-<!-- Fondo base oscuro indispensable para que los morados brillen -->
 <div
   class="relative flex flex-col items-center justify-center text-center min-h-screen bg-black overflow-hidden px-4 pt-20"
 >
-  <!-- 1. GRADIENTE DE FONDO: De negro profundo a tu morado más intenso -->
+  <app-stained-glass class="absolute inset-0 z-0"></app-stained-glass>
   <div
     class="absolute inset-0 bg-linear-to-b from-black via-[#9B30FF]/20 to-[#AA00FF]/40 z-0"
   ></div>
-
-  <!-- 2. ORBE RESPLANDECIENTE: Usamos tu color intermedio para dar la luz de fondo -->
   <div
     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#9B30FF]/30 rounded-full blur-[120px] pointer-events-none z-0"
   ></div>
-
-  <!-- Contenido Principal -->
   <div class="relative z-10 max-w-4xl mx-auto space-y-8">
-    <!-- TÍTULO: Blanco con un sutil resplandor de tu color más oscuro -->
     <h1
       class="font-cinzel text-[64px] md:text-[120px] leading-tight tracking-[0.25em] text-white animate-pulse drop-shadow-[0_0_25px_rgba(147,112,219,0.5)]"
     >
       OBSIDIAN
     </h1>
-
-    <!-- SUBTÍTULO: Usamos el morado suave para que no compita con el título -->
     <p class="text-xl md:text-2xl text-[#9370DB] font-light tracking-widest max-w-2xl mx-auto">
       Donde la materia se encuentra con el movimiento.
     </p>
-
-    <!-- BOTÓN: Borde del color medio, fondo transparente, y al hacer hover brilla con el más fuerte -->
     <div class="pt-12">
       <button
         class="px-10 py-4 bg-transparent border-2 border-[#9B30FF] text-white uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-[#AA00FF] hover:border-[#AA00FF] hover:shadow-[0_0_30px_rgba(170,0,255,0.6)] transition-all duration-300 active:scale-95"

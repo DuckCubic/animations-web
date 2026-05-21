@@ -19,6 +19,14 @@ export interface Cell {
   bounds?: { minX: number; minY: number; width: number; height: number };
 }
 
+export interface StainGlassNode {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  color: string;
+}
+
 export interface CardData {
   id: number;
   name: string;
@@ -28,4 +36,8 @@ export interface CardData {
   density: number;
   shatterForce: number;
   size?: 'normal' | 'large';
+
+  type?: 'image' | 'stained-glass';
+  speed?: number;
+  palette?: string[];
 }
