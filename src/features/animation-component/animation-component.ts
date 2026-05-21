@@ -51,7 +51,7 @@ export class AnimationComponent {
       density: 15,
       shatterForce: 0,
       type: 'stained-glass',
-      speed: 2,
+      speed: 15,
       palette: ['#4a154b', '#e01e5a', '#fecb2e', '#36c5f0'],
     },
     {
